@@ -1,0 +1,21 @@
+{
+  "name": "bo-recode",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@types/node": "^18",
+    "nuxt": "^3.6.1"
+  },
+  "dependencies": {
+    "@nuxtjs/sanity": "^1.7.3",
+    "@sanity/client": "^6.1.5",
+    "nuxt-swiper": "^1.1.1"
+  }
+}
