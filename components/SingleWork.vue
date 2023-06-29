@@ -137,7 +137,7 @@ export default {
 .singleWork {
   overflow: visible;
   width: 100%;
-  margin-bottom: calc(var(--space) / 2);
+  margin-bottom: calc(var(--space)*2);
   /* background-color: white; */
 }
 
@@ -214,6 +214,10 @@ export default {
 
 .swiper-button-disabled {
   color: grey;
+}
+
+.workdesc {
+  font-family: 'DiGroteskItalic' !important;
 }
 
 @media screen and (max-width: 820px) {

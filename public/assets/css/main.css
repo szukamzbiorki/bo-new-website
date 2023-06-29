@@ -34,6 +34,10 @@
     font-family: 'DiGrotesk';
     src: url("../DiGrotesk-Regular.ttf") format('truetype');
   }
+  @font-face {
+    font-family: 'DiGroteskItalic';
+    src: url("../DiGrotesk-Italic.otf") format('opentype');
+  }
   
   @font-face {
     font-family: 'Diatype';

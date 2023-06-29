@@ -2,7 +2,7 @@
   <div class="infobox">
     <InfoButton></InfoButton>
     <div class="infocontent">
-      <img class="biglogo" src="../public/assets/logorender.png" alt="">
+      <img class="biglogo" :src="data[0].logo.asset.url" alt="">
       <div class="infocontainer">
         <!-- INTRO SECTION -->
         <div class="title">{{ data[0].name }}</div>
@@ -16,7 +16,7 @@
         </div>
         <!-- CONTACT SECTION -->
         <div class="contact">
-          <div v-for="slot in data[0].contactinfo" v-bind:key="slot.id">{{ slot }}</div>
+          <div v-for="  slot   in   data[0].contactinfo  " v-bind:key="slot.id">{{ slot }}</div>
         </div>
         <div class="separator"></div>
         <!-- EXHIBITIONS SECTION -->
@@ -25,7 +25,7 @@
           <div class="upcomingexhibitions marbot">
             <div class="exhibitionstitle">UPCOMING EXHIBITIONS</div>
             <div class="expoinstances">
-              <div class="expogrid marbot" v-for="expo in data[0].upexpos" v-bind:key="expo.id">
+              <div class="expogrid marbot" v-for="  expo   in   data[0].upexpos  " v-bind:key="expo.id">
                 <div>{{ expo.year }}</div>
                 <div>{{ expo.place }}</div>
                 <div>{{ expo.citycountry }}</div>
@@ -36,7 +36,7 @@
           <div class="currentexhibitions marbot">
             <div class="exhibitionstitle">EXHIBITIONS</div>
             <div class="expoinstances">
-              <div class="expogrid marbot" v-for="expo in data[0].expos" v-bind:key="expo.id">
+              <div class="expogrid marbot" v-for="  expo   in   data[0].expos  " v-bind:key="expo.id">
                 <div>{{ expo.year }}</div>
                 <div>{{ expo.place }}</div>
                 <div>{{ expo.citycountry }}</div>
@@ -47,7 +47,7 @@
           <div class="education marbot">
             <div class="exhibitionstitle">EDUCATION</div>
             <div class="expoinstances">
-              <div class="expogrid marbot" v-for="expo in data[0].education" v-bind:key="expo.id">
+              <div class="expogrid marbot" v-for="  expo   in   data[0].education  " v-bind:key="expo.id">
                 <div>{{ expo.year }}</div>
                 <div>{{ expo.place }}</div>
                 <div>{{ expo.citycountry }}</div>
@@ -63,8 +63,9 @@
 </template>
 
 <script setup>
-const query = groq`*[_type == "info"]{name,bio,quote,contactinfo[],expos[],upexpos[],education[]}`
+const query = groq`*[_type == "info"]{logo{asset->{url}},name,bio,quote,contactinfo[],expos[],upexpos[],education[]}`
 const { data } = useSanityQuery(query)
+console.log(data)
 </script>
 
 <style>
@@ -88,7 +89,8 @@ const { data } = useSanityQuery(query)
 }
 
 .active {
-  left: 35vw !important;
+  /* left: 35vw !important; */
+  transform: translate(-55vw);
   opacity: 100 !important;
 }
 
