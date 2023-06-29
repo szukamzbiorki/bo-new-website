@@ -16,7 +16,7 @@
 // const { data, refresh } = useSanityQuery(query)
 // this.works = await this.fetchData(query);
 // console.log(this.works)
-const query = groq`{ "works": *[_type == "work"]{type,title,sizeplace,mediumyear,imagesGallery[]{asset->{url}}}| order(_updatedAt desc) }`
+const query = groq`{ "works": *[_type == "work"]{type,title,sizeplace,mediumyear,description,imagesGallery[]{asset->{url}}}| order(_updatedAt desc) }`
 
 const sanity = useSanity()
 

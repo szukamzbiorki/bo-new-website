@@ -1,26 +1,5 @@
 <template>
   <div class="singleWork swiper__container">
-    <!-- <Swiper :modules="[SwiperAutoplay, SwiperEffectCreative]"
-      :slides-per-view="1"
-      :loop="true" :effect="'creative'"
-      :autoplay="{
-        delay: 8000,
-        disableOnInteraction: true,
-      }"
-      :creative-effect="{
-        prev: {
-          shadow: false,
-          translate: ['-20%', 0, -1],
-        },
-        next: {
-          translate: ['100%', 0, 0],
-        },
-      }">
-      <SwiperSlide class="swiper-slide" :key="image.id" v-for="image in imagesGallery">
-        <img :src="image.asset.url" class="workImage" />
-      </SwiperSlide>
-    </Swiper> -->
-
     <div class="gallery">
       <img v-if="imagesGallery.length < 2" class="workImage" :src="imagesGallery[0].asset.url" alt="" srcset="">
       <div v-if="imagesGallery.length > 1" class="swiper mySwiper">
@@ -32,8 +11,6 @@
 
       </div>
     </div>
-    <!-- <Workimages :images="imagesGallery"></Workimages>
-    <WorkDescription :type="type" :title="title" :size="size" :medium="medium" /> -->
     <div class="descriptionBox">
       <div v-if="imagesGallery.length > 1" class="slidePrev-btn navbut">&#8592;</div>
       <div v-if="imagesGallery.length > 1" class="slideNext-btn navbut">&#8594;</div>
@@ -49,6 +26,7 @@
       <span class="medium smalltype">
         {{ mediumyear }}
       </span>
+      <div class="workdesc"> {{ description }}</div>
     </div>
   </div>
 </template>
@@ -72,6 +50,7 @@ export default {
     title: String,
     sizeplace: String,
     mediumyear: String,
+    description: String,
     imagesGallery: [],
   },
   mounted() {
