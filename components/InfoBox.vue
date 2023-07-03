@@ -178,6 +178,8 @@ const { data } = useSanityQuery(query)
 @media screen and (max-width: 820px) {
   .infobox {
     width: 100vw !important;
+    left: 0;
+    transform: translate(88%);
   }
 
   .education {
@@ -185,7 +187,7 @@ const { data } = useSanityQuery(query)
   }
 
   .active {
-    transform: translate(-89vw);
+    transform: translate(0);
   }
 
   .infocontent {
