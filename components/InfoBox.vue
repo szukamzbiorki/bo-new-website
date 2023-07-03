@@ -65,7 +65,6 @@
 <script setup>
 const query = groq`*[_type == "info"]{logo{asset->{url}},name,bio,quote,contactinfo[],expos[],upexpos[],education[]}`
 const { data } = useSanityQuery(query)
-console.log(data)
 </script>
 
 <style>

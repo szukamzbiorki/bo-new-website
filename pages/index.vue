@@ -7,21 +7,11 @@
 </template>
 
 <script setup>
-//ALTERNATIVE WAY OF QUERY
-// const numerek = this.$route.params.id;
-// const query = `*[_type == "work" && whatever == "${numerek}"]{title,size,medium,description,imagesGallery[]{asset->{url}}}`
-// this.works = await this.fetchData(query, numerek)
-// const query = groq`*[_type == "post" && topic == $topic][0..10]`
-// const query = groq`*[_type == "work"]{type,title,sizeplace,mediumyear,imagesGallery[]{asset->{url}}}| order(_updatedAt desc)`
-// const { data, refresh } = useSanityQuery(query)
-// this.works = await this.fetchData(query);
-// console.log(this.works)
 const query = groq`{ "works": *[_type == "work"]{type,title,sizeplace,mediumyear,description,imagesGallery[]{asset->{url}}}| order(_updatedAt desc) }`
 
 const sanity = useSanity()
 
 const { data } = await useAsyncData('works', () => sanity.fetch(query))
-console.log(data)
 </script>
   
 <style>

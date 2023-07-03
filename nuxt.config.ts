@@ -6,15 +6,11 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/sanity',
   'nuxt-swiper'],
   swiper: {
-    // Swiper options
-    // ----------------------
-    prefix: 'Swiper',
-    styleLang: 'css',
-    modules: ['navigation', 'pagination'], // all modules are imported by default
+    styleLang: 'css'
   },
   sanity: {
     projectId: 'imrh2q1w',
     dataset: 'production',
   },
-  css: [ '/public/assets/css/main.css',]
+  css: [ '/public/assets/css/main.css',],
 })

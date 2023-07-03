@@ -1,19 +1,27 @@
 <template>
-  <div class="singleWork swiper__container">
-    <div class="gallery">
-      <img v-if="imagesGallery.length < 2" class="workImage" :src="imagesGallery[0].asset.url" alt="" srcset="">
-      <div v-if="imagesGallery.length > 1" class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" :key="image.id" v-for="image in imagesGallery">
-            <img :src="image.asset.url" class="workImage" />
-          </div>
-        </div>
+  <div class="singleWork">
+    <Swiper class="gallery" :modules="[SwiperNavigation, SwiperAutoplay, SwiperEffectCreative]" :slides-per-view="1"
+      :loop="true" :effect="'creative'" :autoplay="{
+        delay: 8000,
+        disableOnInteraction: true,
+      }" :navigation="navigationOptions" :creative-effect="{
+  prev: {
+    shadow: false,
+    translate: [0, '-20%', -1],
+  },
+  next: {
+    translate: [0, '100%', 0],
+  },
+}
+  ">
+      <SwiperSlide v-for="     image      in      imagesGallery     " :key="image.id" class="carousel-cell">
+        <img class="workImage" :src="image.asset.url" alt="">
+      </SwiperSlide>
+    </Swiper>
 
-      </div>
-    </div>
     <div class="descriptionBox">
-      <div v-if="imagesGallery.length > 1" class="slidePrev-btn navbut">&#8592;</div>
-      <div v-if="imagesGallery.length > 1" class="slideNext-btn navbut">&#8594;</div>
+      <div v-if="imagesGallery.length > 1" @click="previous()" class="slidePrev-btn navbut">&#8592;</div>
+      <div v-if="imagesGallery.length > 1" @click="next()" class="slideNext-btn navbut">&#8594;</div>
       <span :class="type">
         {{ type }}
       </span>
@@ -41,6 +49,7 @@ import {
   EffectCreative
 } from 'swiper';
 import 'swiper/swiper-bundle.min.css'
+// import Flickity from 'vue-flickity';
 
 Swiper.use([Navigation, EffectCreative, EffectCards]);
 
@@ -51,49 +60,57 @@ export default {
     sizeplace: String,
     mediumyear: String,
     description: String,
-    imagesGallery: [],
+    imagesGallery: Array,
+  },
+  // components: {
+  //   Flickity
+  // },
+  data() {
+    return {
+      flickityOptions: {
+        prevNextButtons: false,
+        pageDots: false,
+        wrapAround: true,
+        imagesLoaded: true,
+      },
+      navigationOptions: {
+        nextEl: ".slidePrev-btn",
+        prevEl: ".slideNext-btn"
+      }
+    };
+  },
+  methods: {
+    next() {
+      this.$refs.flickity.next();
+    },
+
+    previous() {
+      this.$refs.flickity.previous();
+    }
   },
   mounted() {
-    document.querySelectorAll('.swiper').forEach(swiper => {
-      const swiperEl = new Swiper(swiper, {
-        loop: false,
-        slidesPerView: 1,
-        simulateTouch: false,
-        // centeredSlides: true,
-        effect: 'creative',
-        creativeEffect: {
-          prev: {
-            translate: [0, 0, 0],
-            opacity: 0
-          },
-          next: {
-            translate: [0, "100%", 0],
-            opacity: 1
-          },
-        }
-      })
 
 
-      const prevButton = swiper.closest('.swiper__container').querySelector('.slidePrev-btn');
-      const nextButton = swiper.closest('.swiper__container').querySelector('.slideNext-btn');
+    // const prevButton = swiper.closest('.swiper__container').querySelector('.slidePrev-btn');
+    // const nextButton = swiper.closest('.swiper__container').querySelector('.slideNext-btn');
 
-      if (prevButton) {
-        prevButton.addEventListener('click', () => {
-          swiperEl.slidePrev();
-        })
-      }
+    // if (prevButton) {
+    //   prevButton.addEventListener('click', () => {
+    //     swiperEl.slidePrev();
+    //   })
+    // }
 
-      if (nextButton) {
-        nextButton.addEventListener('click', () => {
-          swiperEl.slideNext();
-        })
-      }
+    // if (nextButton) {
+    //   nextButton.addEventListener('click', () => {
+    //     swiperEl.slideNext();
+    //   })
+    // }
 
 
-      // if (swiperEl.isBeginning) {
-      //   swiperEl.navigation.update()
-      // }
-    })
+    //   // if (swiperEl.isBeginning) {
+    //   //   swiperEl.navigation.update()
+    //   // }
+    // })
 
     // you can use different options later
     // swiper.on('activeIndexChange', (swiper) => {
@@ -106,15 +123,11 @@ export default {
 
 <style>
 .swiper-wrapper {
-  overflow: visible;
+  overflow: hidden;
 }
 
 .size {
   color: grey;
-}
-
-.gallery {
-  overflow: visible;
 }
 
 .navbut {
@@ -122,15 +135,10 @@ export default {
   display: inline-block;
   cursor: pointer;
   -webkit-touch-callout: none;
-  /* iOS Safari */
   -webkit-user-select: none;
-  /* Safari */
   -khtml-user-select: none;
-  /* Konqueror HTML */
   -moz-user-select: none;
-  /* Old versions of Firefox */
   -ms-user-select: none;
-  /* Internet Explorer/Edge */
   user-select: none;
 }
 
@@ -142,10 +150,6 @@ export default {
 }
 
 .gallery {
-  /* background-color: grey; */
-  /* flex: 1 0 auto;
-  display: flex;
-  flex-direction: row; */
   display: block;
   width: calc(60vw - 40px);
   max-height: 70vh;
@@ -185,6 +189,7 @@ export default {
 
 .descriptionBox * {
   margin-bottom: .1em;
+  margin-right: .3em;
 }
 
 .smalltype {

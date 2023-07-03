@@ -16,6 +16,7 @@
   "dependencies": {
     "@nuxtjs/sanity": "^1.7.3",
     "@sanity/client": "^6.1.5",
-    "nuxt-swiper": "^1.1.1"
+    "nuxt-swiper": "^1.1.1",
+    "vue-flickity": "^1.2.1"
   }
 }
