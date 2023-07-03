@@ -23,6 +23,7 @@ export default {
     overflow-x: hidden;
     overflow-y: hidden;
     /* transition: height 0.4s ease-out, opacity 0.2s ease-out; */
+    margin-bottom: 13vh;
 }
 
 .workrow::-webkit-scrollbar {
