@@ -179,7 +179,7 @@ const { data } = useSanityQuery(query)
   .infobox {
     width: 100vw !important;
     left: 0;
-    transform: translate(88%);
+    transform: translateX(calc(100vw - 58px));
   }
 
   .education {
@@ -187,7 +187,7 @@ const { data } = useSanityQuery(query)
   }
 
   .active {
-    transform: translate(0);
+    transform: translateX(0);
   }
 
   .infocontent {
