@@ -23,7 +23,7 @@ export default {
     overflow-x: hidden;
     overflow-y: hidden;
     /* transition: height 0.4s ease-out, opacity 0.2s ease-out; */
-    margin-bottom: 13vh;
+
 }
 
 .workrow::-webkit-scrollbar {
@@ -33,6 +33,7 @@ export default {
 @media screen and (max-width: 820px) {
     .workcolumn {
         width: calc(100vw - 2*var(--space)) !important;
+        margin-bottom: 13vh;
     }
 }
 </style>
