@@ -7,7 +7,7 @@
       }" :navigation="navigationOptions" :creative-effect="{
   prev: {
     shadow: false,
-    translate: [0, '-20%', -1],
+    translate: [0, '-100%', -1],
   },
   next: {
     translate: [0, '100%', 0],
@@ -40,18 +40,6 @@
 </template>
 
 <script>
-import {
-  Swiper,
-  Navigation,
-  Pagination,
-  EffectCards,
-  Autoplay,
-  EffectCreative
-} from 'swiper';
-import 'swiper/swiper-bundle.min.css'
-// import Flickity from 'vue-flickity';
-
-Swiper.use([Navigation, EffectCreative, EffectCards]);
 
 export default {
   props: {
@@ -62,60 +50,13 @@ export default {
     description: String,
     imagesGallery: Array,
   },
-  // components: {
-  //   Flickity
-  // },
   data() {
     return {
-      flickityOptions: {
-        prevNextButtons: false,
-        pageDots: false,
-        wrapAround: true,
-        imagesLoaded: true,
-      },
       navigationOptions: {
         nextEl: ".slidePrev-btn",
         prevEl: ".slideNext-btn"
       }
     };
-  },
-  methods: {
-    next() {
-      this.$refs.flickity.next();
-    },
-
-    previous() {
-      this.$refs.flickity.previous();
-    }
-  },
-  mounted() {
-
-
-    // const prevButton = swiper.closest('.swiper__container').querySelector('.slidePrev-btn');
-    // const nextButton = swiper.closest('.swiper__container').querySelector('.slideNext-btn');
-
-    // if (prevButton) {
-    //   prevButton.addEventListener('click', () => {
-    //     swiperEl.slidePrev();
-    //   })
-    // }
-
-    // if (nextButton) {
-    //   nextButton.addEventListener('click', () => {
-    //     swiperEl.slideNext();
-    //   })
-    // }
-
-
-    //   // if (swiperEl.isBeginning) {
-    //   //   swiperEl.navigation.update()
-    //   // }
-    // })
-
-    // you can use different options later
-    // swiper.on('activeIndexChange', (swiper) => {
-    //   // console.log(swiper)
-    // })
   }
 }
 </script>

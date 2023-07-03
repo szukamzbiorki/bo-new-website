@@ -185,7 +185,7 @@ const { data } = useSanityQuery(query)
   }
 
   .active {
-    left: 0 !important;
+    transform: translate(-89vw);
   }
 
   .infocontent {
